@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医学伦理学 - 全面复习（完整版）</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #495057;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+            --warning-color: #fd7e14;
+            --info-bg: #e9f7fe;
+            --tip-bg: #fff3cd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 { color: var(--secondary-color); margin: 0; font-size: 2em; }
+        h2 { color: var(--secondary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; margin-top: 50px; font-size: 1.8em; }
+        h3 { color: #343a40; border-left: 5px solid var(--primary-color); padding-left: 15px; margin-top: 40px; font-size: 1.5em; }
+        h4 { color: #495057; font-size: 1.2em; font-style: italic; margin-top: 30px; }
+        
+        p, ul, ol { margin-top: 0; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        ul.custom-list { list-style: none; padding-left: 20px; }
+        ul.custom-list li::before { content: '🔹'; color: var(--primary-color); font-weight: bold; display: inline-block; width: 1em; margin-left: -1.2em; }
+
+        .instructions { background-color: var(--info-bg); border-left: 5px solid var(--primary-color); padding: 15px 20px; margin-bottom: 25px; border-radius: 5px; font-size: 0.95em; }
+        .exam-tip { color: var(--warning-color); font-weight: bold; font-style: italic; }
+
+        .concept-block { background-color: #fdfdfd; border: 1px solid #f1f1f1; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        
+        .short-answer-card { background-color: #fff; border: 1px solid var(--border-color); border-radius: 8px; margin: 20px 0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-header { background-color: #f7f7f7; padding: 12px 20px; cursor: pointer; font-weight: bold; color: #495057; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.2s ease; }
+        .card-header.exam-question { background-color: var(--tip-bg); color: #856404; }
+        .card-header:hover { background-color: #e9ecef; }
+        .card-header.exam-question:hover { background-color: #ffeeba; }
+        .card-header::after { content: '▼'; font-size: 0.8em; transition: transform 0.3s ease; }
+        .card-header.active::after { transform: rotate(180deg); }
+        .card-body { padding: 20px; border-top: 1px solid var(--border-color); display: none; }
+        
+        .case-study-block { border: 1px solid var(--case-border); margin-top: 30px; padding: 20px; border-radius: 8px; background: var(--case-bg); }
+        .case-analysis-points { margin-top: 15px; background-color: #e8f6f3; border: 1px solid #a2d9ce; padding: 10px 15px; border-radius: 5px; font-size: 0.95em; }
+
+        .image-container { margin: 10px 0; text-align: center; }
+        .image-container img { max-width: 100%; height: auto; border: 1px solid var(--border-color); border-radius: 5px; padding: 5px; }
+
+        .blank { cursor: pointer; border-bottom: 2px dotted var(--primary-color); padding: 1px 4px; transition: background-color 0.3s; border-radius: 4px; display: inline-block; }
+        .blank:hover { background-color: #e9ecef; }
+        .placeholder { color: var(--primary-color); font-style: italic; font-size: 0.9em; }
+        .answer-text { color: var(--success-color); font-weight: bold; }
+
+        .global-controls { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        .btn { background-color: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1em; transition: background-color 0.3s ease; }
+        .btn:hover { background-color: #5a6268; }
+
+        @media (max-width: 600px) {
+            body { padding: 5px; font-size: 15px; }
+            .container { padding: 10px 15px; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.4em; }
+            h3 { font-size: 1.2em; }
+            p, li { line-height: 1.9; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>医学伦理学 全面复习 (完整版)</h1>
+            <p>【写在前面：生殖伦理的优生优育和前沿科技伦理的干细胞技术都没有放进来，因为上课确实没讲，但是优生优育确实好像考过，所以有空翻一下。前面四章总论很爱考填空题，真题给大家翻出来了，稍微背细点，对着书背，后面的分论考简答和分析，所以重点是小标题，至于每个小标题里面有什么，看一下到时候上考场现编。最后免责声明一下，这些内容也不一定全，可能我总结了也不会考或者考了的也不在这个上面，最后有空还是多看书】</p>
+        </header>
+
+        <div class="instructions">
+            <p><strong>使用说明：</strong></p>
+            <ul class="custom-list">
+                <li>对于<strong style="color:#007bff;">[ 关键词 ]</strong>，点击或悬停即可在原位显示答案。</li>
+                <li>对于<strong style="color:#856404;">【问答卡片】</strong>，点击标题即可展开或收起详细内容。</li>
+            </ul>
+        </div>
+
+        <main id="content-container">
+            <section id="part1">
+                <h2 style="text-align:center;">医学伦理学总论</h2>
+
+                <h3>第一章 医学伦理学绪论</h3>
+                <div class="concept-block">
+                    <p>【填空】医学伦理学(medical ethics)是指在系统考察医疗卫生领域<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">道德现象</span></span>的基础上，确立<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">伦理学依据及其概念体系</span></span>，概括出基本的伦理原则或准则、形成伦理分析框架来指导相应道德实践并研究具体伦理问题的一门学科。</p>
+                    <p>【概念】这里讲的医疗卫生领域具体包括预防、临床诊疗、护理、康复、医学研究、卫生事业管理等。</p>
+                </div>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】学习医学伦理学的意义</div>
+                    <div class="card-body">
+                         <p>医学伦理学能帮助全面识别医疗卫生实践和医学研究中存在的诸多伦理问题，培养伦理意识和决策能力，从容应对医疗卫生和医学研究中棘手的伦理难题；同时，它有助于培育一个人的道德品质、信念与情感，提升道德境界与修养，坚守做人的原则与美德，自觉履行道德义务和专业职责。</p>
+                    </div>
+                </div>
+                
+                <h4>第一节 伦理学的概念</h4>
+                <div class="concept-block">
+                    <p><b>伦理学的含义：</b>【填空】伦理学(ethics)是对<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">道德现象</span></span>的系统研究，亦称<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">道德哲学</span></span>。在系统反思人类道德生活的基础上，伦理学逐渐形成了一套关于<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">善恶、义务、行为准则、价值等</span></span>范畴和概念体系，实现了对道德观的理论化和系统化。</p>
+                </div>
+
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】道德与伦理的联系与区别</div>
+                    <div class="card-body">
+                         <ul>
+                            <li><b>共同点：</b>都表达了“行为应该如何”的涵义。</li>
+                            <li><b>区别：</b>
+                                <ul class="custom-list">
+                                    <li><b>道德 (morality)</b>: 侧重于个体的道德品质与修养，关注人的内在德性。</li>
+                                    <li><b>伦理 (ethics)</b>: 侧重于社会的伦理关系与秩序，关注外在的行为规范。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                 <div class="concept-block">
+                     <p><b>道德的定义：</b>【填空】道德是由社会的经济基础决定的，以<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">善恶、正当与否、该不该</span></span>等作为评价标准，借助<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">自律与他律</span></span>来调节<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">人与人、人与社会、人与自然</span></span>之间的关系，并追求自身人格完善的<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">活动、关系或意识</span></span>的总称。</p>
+                 </div>
+
+                <h4>第二节 医学伦理学的研究对象、内容和方法</h4>
+                <div class="concept-block">
+                    <p><b>研究对象：</b>医学伦理学以医疗卫生领域中的<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">道德现象</span></span>及其<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">发展规律</span></span>为主要的研究对象。</p>
+                    <p><b>医学道德现象：</b>是医疗卫生领域中存在的且能够被人们感知的具有善恶、正邪、荣辱等评价意义的社会现象的总称。它包括医学道德的<b>意识现象、规范现象和活动现象</b>等。</p>
+                    <p><b>医疗卫生领域人际关系：</b>包括人与人之间；人与组织之间；组织之间；人、医疗机构与社会之间；人与自然环境之间的关系。</p>
+                </div>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】医学伦理学的研究内容</div>
+                    <div class="card-body">
+                        <ol>
+                            <li><b>医学伦理学基本理论：</b>如生命观（生命神圣论、生命质量论、生命价值论）、死亡观、道义论、功利论、美德论等。</li>
+                            <li><b>医德规范：</b>包括医德基本原则、具体应用原则（如知情同意、保密）和医德规范。</li>
+                            <li><b>医德的基本实践：</b>通过医德教育、医德培养、医德修养、医德评价来实现。</li>
+                            <li><b>伦理难题与伦理分析：</b>分析医学新技术、医改等带来的伦理冲突。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h4>第四节 学习意义与方法</h4>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】学习医学伦理学的意义</div>
+                    <div class="card-body">
+                        <ol>
+                            <li>提高伦理意识、培养伦理分析能力，积极应对医学伦理问题。</li>
+                            <li>增进职业伦理素养，实现医学道德理想，从我做起改善医患关系。</li>
+                            <li>坚定信念，忠诚于医疗卫生事业，积极投身于健康中国建设。</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+			<section id="part2">
+                <h2 style="text-align:center;">医学伦理学分论</h2>
+
+                <h2><a name="_Toc200755664"></a>第五章 医疗人际关系伦理</h2>
+
+                <h3><a name="_Toc200755665"></a>第一节 医患关系</h3>
+                <h4><a name="_Toc200755666"></a>医患关系概述</h4>
+                <div class="concept-block">
+                    <p>著名医学史家<b>亨利·西格里斯</b>认为：“每一种医学行动始终涉及两类当事人：医生和患者，或者更广泛地说，医学团体和社会，医学无非是这两群人之间多方面的关系。”</p>
+                    <ul class="custom-list">
+                        <li><b>狭义的医患关系：</b>特指医师与患者之间的关系。</li>
+                        <li><b>广义的医患关系：</b>指以医师为中心的群体与以患者为中心的群体在诊治或缓解患者疾病过程中所建立的关系。其中，“医”方包括医师、护士、医技、药技、管理及后勤人员等；“患”方包括患者本人及其利益相关的亲属、监护人、代理人等。</li>
+                    </ul>
+                </div>
+
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】医患关系有何特征？</div>
+                    <div class="card-body">
+                        <ul class="custom-list">
+                            <li><b>明确的目的性和目的的统一性：</b>双方都围绕着“防治疾病、维护健康”这一共同目标。</li>
+                            <li><b>利益的相关性和价值实现的统一性：</b>良好的治疗结果对医患双方都有利，是双方价值的共同实现。</li>
+                            <li><b>人格权利的平等性和医学知识的不对称性：</b>双方在人格和法律地位上是平等的，但在医学专业知识上存在巨大差异，医方处于信息优势地位。</li>
+                            <li><b>选择的不对等性和情感的中立性：</b>患者通常只能被动选择医生，而医生则需保持职业中立，不能因个人情感影响诊疗。</li>
+                            <li><b>医患冲突的敏感性和不可避免性：</b>由于涉及生命健康和高昂费用，加上疾病本身的复杂性和不确定性，医患关系天然敏感，容易产生冲突。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【重点·简答】医患关系的性质是什么？</div>
+                    <div class="card-body">
+                        <p>就其实质来说，医患关系应当是<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">以诚信为基础的具有契约性质的信托关系</span></span>。</p>
+                        <ul class="custom-list">
+                            <li><b>以诚信为基础：</b>诚信是医患关系建立和维系的前提和基石。患者信任医生，医生忠于承诺。</li>
+                            <li><b>具有契约性质：</b>患者挂号就诊，就是与医疗机构订立了医疗服务合同，双方均享有合同权利并承担相应义务。</li>
+                            <li><b>是一种信托关系：</b>患者因专业知识的缺乏，将自己的生命健康托付给医方。医方作为受托人，应以患者最大利益为行为准则。但它又不同于一般财产信托，因为：
+                                <ol>
+                                    <li><b>客体不同：</b>信托客体是生命健康，而非财产。</li>
+                                    <li><b>权利不同：</b>医方处分时需获得患者的知情同意。</li>
+                                    <li><b>结果不同：</b>医方只能承诺尽力而为，不能保证结果一定符合患者意愿。</li>
+                                </ol>
+                            </li>
+                        </ul>
+                         <div class="image-container"><img src="images/image036.png" alt="真题复现"></div>
+                         <div class="image-container"><img src="images/image037.png" alt="真题复现"></div>
+                    </div>
+                </div>
+
+                <h4>医患关系内容（权利与义务）</h4>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">医方的权利与义务</div>
+                    <div class="card-body">
+                        <p><b>医方的权利：</b></p>
+                        <ul class="custom-list">
+                            <li>在注册的执业范围内，进行医学诊查、疾病检查、医学处置、出具相应的医学证明文件，选择合理的医疗、预防、保健方案。</li>
+                            <li>获得与本人活动相当的医疗设备基本条件。</li>
+                            <li>从事医学研究、学术交流，参加专业学术团体。</li>
+                            <li>参加专业培训，接受继续医学教育。</li>
+                            <li>在执业活动中，人格尊严、人身安全不受侵犯。</li>
+                            <li>获取工资报酬和津贴，享受国家规定的福利待遇。</li>
+                            <li>依法参与所在机构的民主管理。</li>
+                        </ul>
+                        <p><b>医方的义务：</b></p>
+                        <ul class="custom-list">
+                            <li>遵守法律、法规，遵守技术操作规范。</li>
+                            <li>树立敬业精神，遵守职业道德，履行医师义务，尽职尽责为患者服务。</li>
+                            <li>关心、爱护、尊重患者，保护患者的隐私。</li>
+                            <li>努力钻研业务，更新知识，提高专业技术水平。</li>
+                            <li>宣传卫生保健知识，对患者进行健康教育。</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">患者的权利与义务</div>
+                    <div class="card-body">
+                         <p><b>患者的权利：</b></p>
+                        <ul class="custom-list">
+                            <li><b>基本医疗权：</b>获得基本医疗卫生服务的权利。</li>
+                            <li><b>知情同意权：</b>有权了解病情、诊断、治疗方案及风险，并在此基础上做出自主决定。</li>
+                            <li><b>隐私保护权：</b>个人信息、病情等不被随意泄露。</li>
+                            <li><b>经济索赔权：</b>因医疗过失受到损害时，有权要求赔偿。</li>
+                            <li><b>医疗监督权：</b>对医疗服务有监督和提出意见的权利。</li>
+                            <li><b>社会免责权：</b>因病不能履行某些社会或法律义务时，可依法获得豁免。</li>
+                        </ul>
+                        <p><b>患者的义务：</b></p>
+                         <ul class="custom-list">
+                            <li>保持和增进健康的义务。</li>
+                            <li>配合诊疗的义务（如实陈述病情、遵守医嘱）。</li>
+                            <li>遵守医院规章制度，尊重医务人员及其劳动的义务。</li>
+                            <li>给付医疗费用的义务。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3><a name="_Toc200755669"></a>第二节 医际关系</h3>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】协调医际关系的道德要求</div>
+                    <div class="card-body">
+                         <p><b>医师之间：</b></p>
+                         <ul class="custom-list">
+                             <li>尊重同道，彼此信任</li>
+                             <li>取长补短，互相学习</li>
+                             <li>精诚合作，互谅互让</li>
+                             <li>求同存异，公平竞争</li>
+                         </ul>
+                         <p><b>医护之间：</b></p>
+                         <ul class="custom-list">
+                             <li>相互支持，合作互补</li>
+                             <li>主动协作，互相监督</li>
+                         </ul>
+                    </div>
+                </div>
+                
+                <h2><a name="_Toc200755673"></a>第六章 健康与公共卫生伦理</h2>
+                <h3><a name="_Toc200755674"></a>健康伦理</h3>
+                <div class="concept-block">
+                    <p><b>健康观：</b>世界卫生组织(WHO)提出：“健康不仅为疾病或羸弱之消除，而系<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">体格、精神与社会</span></span>之完全状态”。</p>
+                </div>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】健康伦理的核心内容</div>
+                    <div class="card-body">
+                        <ul class="custom-list">
+                           <li><b>健康权：</b>健康是一项基本人权，是公民享受其他权利的前提。</li>
+                           <li><b>健康的责任：</b>健康不仅是权利，也是责任，包括个人对自身健康负责、社会为成员健康创造条件、政府提供制度保障的责任。</li>
+                           <li><b>健康公正：</b>核心是消除可避免的健康不平等，保障每个人，特别是弱势群体，都能公平地获得促进健康的机会和资源。</li>
+                           <li><b>全球健康伦理：</b>强调健康无国界，富裕国家对贫困国家的健康问题负有道义责任，需共同应对全球性健康威胁。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <h3><a name="_Toc200755675"></a>公共卫生伦理</h3>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】公共卫生领域的伦理难题</div>
+                    <div class="card-body">
+                        <p><b>个人权利与公共善的冲突：</b>这是公共卫生伦理最核心的冲突。例如，为了防控传染病（公共善），需要对个人进行强制隔离或疫苗接种，这限制了个人自由（个人权利）。伦理原则要求这种限制必须是必要的、有效的、合乎比例的，且对受限制者给予相应的补偿和尊重。</p>
+                        <p><b>正义观的冲突：</b></p>
+                        <ul class="custom-list">
+                            <li><b>平等主义正义观：</b>以社会为取向，强调健康结果的平等和社会责任，力求缩小健康差距。</li>
+                            <li><b>自由主义正义观：</b>以个人为取向，强调健康机会的平等和个人责任，捍卫个人的选择自由。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+			<section id="part3">
+                <h2><a name="_Toc200755681"></a>第九章 辅助生殖伦理 <span class="exam-tip">(务必记得结合前面的生命伦理学，何为生命等)</span></h2>
+
+                <h3><a name="_Toc200755682"></a>第一节 辅助生殖技术概述</h3>
+                <div class="concept-block">
+                    <p>辅助生殖技术属于自然科学技术范畴，它是解决不孕症患者“能不能”生育的问题。而伦理属于哲学范畴，是协调人与人、人与社会各种关系所应遵循的行为规范，它是基于价值判断来解决技术“该不该”实施的问题。</p>
+                    <ul class="custom-list">
+                        <li>一方面，通过伦理评价和价值判断，防止辅助生殖技术的滥用；</li>
+                        <li>另一方面，传统伦理观也要与时俱进，以更好地引导、规范新技术的应用，并促进技术的进步。</li>
+                    </ul>
+                </div>
+
+                <h3><a name="_Toc200755683"></a>第二节 辅助生殖技术的伦理价值</h3>
+                <div class="concept-block">
+                    <ul class="custom-list">
+                        <li><b>治疗不孕不育：</b>满足不孕不育夫妇的生育意愿，维护家庭稳定与和谐。</li>
+                        <li><b>实现优生优育：</b>通过胚胎植入前遗传学诊断（PGD）等技术，可以筛选和移植健康的胚胎，有效阻断遗传病向下一代的传递。</li>
+                        <li><b>提供生殖保险：</b>通过精子、卵子或胚胎的冷冻保存技术，为因疾病（如癌症放化疗）或高危职业等因素可能丧失生育能力的人群，提供保存生育能力的机会。</li>
+                    </ul>
+                </div>
+
+                <h3><a name="_Toc200755684"></a>第三节 辅助生殖技术应用的伦理准则</h3>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】我国辅助生殖技术应用的伦理准则有哪些？</div>
+                    <div class="card-body">
+                         <ul class="custom-list">
+                            <li><b>有利于患者原则：</b>必须以治疗不孕不育为目的，严格掌握适应证，维护患者的身心健康和家庭幸福。</li>
+                            <li><b>知情同意原则：</b>必须向当事人双方告知技术的相关信息、成功率、风险和可能的并发症，并签署知情同意书。</li>
+                            <li><b>保护后代原则：</b>保障以辅助生殖技术出生的后代的合法权益，避免对其造成生理、心理和社会伤害。</li>
+                            <li><b>社会公益原则：</b>技术应用不能危害社会整体利益，不能破坏社会伦理秩序和稳定。</li>
+                            <li><b>保守医密原则：</b>对当事人的身份和技术应用的具体信息严格保密。</li>
+                            <li><b>严防商业化原则：</b>严禁任何形式的商业化赠卵和供精，禁止以任何形式买卖配子、合子、胚胎。</li>
+                            <li><b>伦理监督原则：</b>实施辅助生殖技术的机构必须建立伦理委员会，对技术应用的伦理问题进行审查和监督。</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3><a name="_Toc200755685"></a>第四节 辅助生殖技术的伦理争议</h3>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【重点】辅助生殖技术面临哪些主要伦理争议？</div>
+                    <div class="card-body">
+                        <ul class="custom-list">
+                            <li><b>胚胎的道德地位：</b>核心争议在于胚胎是否具有“人”的地位。如果胚胎是人，那么冷冻、筛选、丢弃剩余胚胎的行为在伦理上是否等同于伤害生命？</li>
+                            <li><b>家庭人伦关系：</b>使用捐赠的精子、卵子或代孕，会产生复杂的、非传统的家庭关系（如遗传学父母与社会学父母分离），可能对子女的身份认同和家庭稳定性造成冲击。</li>
+                            <li><b>违背自然法则：</b>一些观点认为，人工干预生殖过程违背了自然的生命繁衍规律，是对神圣生命过程的“冒犯”。</li>
+                            <li><b>技术滥用与滑坡效应：</b>担心技术被用于非治疗目的（如设计婴儿、单身或同性伴侣生育），以及可能滑向克隆人等更具争议的领域。</li>
+                            <li><b>代孕的伦理困境：</b>涉及对代孕母亲身体和情感的潜在剥削、子宫的工具化、以及孩子归属权的法律和伦理纠纷。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【真题复现】</div>
+                    <div class="card-body">
+                        <div class="image-container"><img src="images/image053.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image054.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image055.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image056.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image057.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image058.png" alt="真题复现"></div>
+                    </div>
+                </div>
+
+                <h2><a name="_Toc200755687"></a>第十章 器官移植伦理</h2>
+                
+                <h3><a name="_Toc200755688"></a>第一节 器官移植技术及一般伦理问题</h3>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】人体器官移植的伦理辩护</div>
+                    <div class="card-body">
+                        <ul class="custom-list">
+                           <li><b>符合道德善：</b>器官移植是救死扶伤的医疗行为，其根本目的是挽救患者生命、恢复健康，符合医学人道主义精神。</li>
+                           <li><b>实现幸福目标：</b>对于器官衰竭的患者，移植是延续生命、提升生命质量的有效手段，帮助其实现个人和家庭的幸福。</li>
+                           <li><b>弘扬利他精神：</b>器官捐献是无私奉献、关爱他人的崇高行为，体现了人类互助友爱的高尚美德。</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】人体器官移植的伦理争论</div>
+                    <div class="card-body">
+                        <ul class="custom-list">
+                           <li><b>人格统一性的争论：</b>特别是心脏、大脑等器官的移植，是否会影响受者的人格、记忆和自我认知。</li>
+                           <li><b>因费用高昂产生的争论：</b>器官移植费用高昂，可能导致只有富人才能享受这种医疗服务，加剧社会不公。</li>
+                           <li><b>因社会负面现象产生的争论：</b>由于器官资源稀缺，可能催生器官买卖、医疗旅游、甚至暴力取缔等严重的违法犯罪行为。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>移植器官的来源与器官分配理论</h4>
+                <div class="concept-block">
+                    <p><b>来源伦理：</b></p>
+                    <ul class="custom-list">
+                        <li><b>尸体器官：</b>涉及脑死亡标准的认定、捐献同意方式（“选择加入”或“选择退出”）、禁止器官商业化等问题。</li>
+                        <li><b>活体器官：</b>需严格遵守知情同意、有利无伤原则，确保捐献者完全自愿且风险最小化，并防止对未成年人或无行为能力者的剥削。</li>
+                        <li><b>异种器官：</b>面临跨物种病毒传播的巨大安全风险、动物福利问题以及对人类物种完整性的伦理挑战。</li>
+                    </ul>
+                    <p><b>分配伦理：</b></p>
+                     <ul class="custom-list">
+                        <li>在器官资源极度稀缺的情况下，如何公平分配是核心难题。分配标准通常需要综合考虑：医学标准（如组织配型、病情紧急程度、术后成功率）、等待时间、地域远近、以及对捐献者亲属的优先等因素。</li>
+                     </ul>
+                </div>
+                 <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【真题复现】</div>
+                    <div class="card-body">
+                        <div class="image-container"><img src="images/image088.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image089.png" alt="真题复现"></div>
+                    </div>
+                </div>
+
+            </section>
+            <section id="part4">
+
+                <h2><a name="_Toc200755722"></a>第十一章 死亡伦理 <span class="exam-tip">(极度重点，年年换着花样考)</span></h2>
+                
+                <h3><a name="_Toc200755723"></a>第一节 死亡诊断标准伦理</h3>
+                <div class="concept-block">
+                    <h4><a name="_Toc200755724"></a>死亡的概念</h4>
+                    <p>根据死亡的进程，一般可分为三个阶段：</p>
+                    <ol>
+                        <li><b>濒死期：</b>生命垂危，重要器官功能严重障碍，但仍是可逆阶段。</li>
+                        <li><b>临床死亡期：</b>心跳、呼吸停止，但组织细胞仍有微弱代谢，此阶段若抢救及时仍有复苏可能。</li>
+                        <li><b>生物学死亡期：</b>全脑功能（包括脑干功能）完全、永久丧失，是死亡的真正完成，是不可逆的。</li>
+                    </ol>
+                </div>
+
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】死亡诊断的标准</div>
+                    <div class="card-body">
+                        <ul class="custom-list">
+                            <li><b>心肺死亡标准：</b>传统标准，指心跳、呼吸和血液循环的永久性、不可逆的停止。</li>
+                            <li><b>脑死亡标准：</b>指包括脑干在内的全脑功能永久性、不可逆的丧失。
+                                <ul>
+                                    <li>1959年，法国医学家<b>莫拉雷和古隆</b>在对23名脑干反射丧失、呼吸停止、脑电波低平的昏迷患者进行临床观察时，发现了有违传统死亡观念的死亡状态。</li>
+                                    <li>【填空】1968年，<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">美国哈佛大学医学院特设委员会</span></span>首次提出了新的死亡概念，把死亡定义为不可逆昏迷，或“脑死亡”。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【重点·简答】脑死亡诊断标准的伦理价值和意义</div>
+                    <div class="card-body">
+                         <ol>
+                            <li><b>科学准确判断死亡：</b>脑死亡是真正的死亡，比心肺死亡更科学、更准确。</li>
+                            <li><b>利于维护逝者身后尊严：</b>避免对已无复苏希望的“尸体”进行无效创伤性抢救。</li>
+                            <li><b>利于节约社会资源：</b>避免宝贵而有限的医疗资源被无效地消耗在脑死亡患者身上。</li>
+                            <li><b>利于减轻家庭负担：</b>避免给家庭带来沉重的经济和精神负担。</li>
+                            <li><b>利于实施器官移植：</b>为器官移植提供了高质量的供体来源。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3><a name="_Toc200755727"></a>第二节 安乐死伦理</h3>
+                 <div class="concept-block">
+                    <h4>安乐死概述</h4>
+                    <p><b>安乐死(euthanasia)定义：</b>患有不治之症的患者在垂危状态下，由于精神和躯体的极端痛苦，在其本人或其亲友的要求下，依据法律规定，经过医生认可，用人道的方法，使其安宁地进入死亡阶段，在无痛苦状态中结束生命的过程。</p>
+                    <h4>安乐死的分类</h4>
+                    <ul class="custom-list">
+                        <li><b>主动安乐死：</b>采取主动措施（如注射致死药物）加速患者死亡。</li>
+                        <li><b>被动安乐死：</b>停止或撤除维持生命的医疗措施（如呼吸机），任其自然死亡。</li>
+                        <li><b>自愿安乐死：</b>基于患者本人清醒、理性的要求。</li>
+                        <li><b>非自愿安乐死：</b>在患者无法表达意愿（如持续植物状态）时，由其亲属或代理人代为提出。</li>
+                    </ul>
+                </div>
+                <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【重点·简答】安乐死的伦理争议</div>
+                    <div class="card-body">
+                         <ol>
+                            <li><b>是否人道之争：</b>支持方认为，解除无法忍受的痛苦是最大的人道；反对方认为，无论如何，剥夺生命本身就是不人道的。</li>
+                            <li><b>死亡权利之争：</b>支持方认为，个人拥有对自己生命的自主决定权，包括选择死亡方式的权利；反对方认为，生命是神圣的，个人无权随意处置，且可能与“不得杀人”的社会基本道德相冲突。</li>
+                            <li><b>实施对象之争：</b>对“不治之症”、“极端痛苦”等条件的界定存在模糊性，可能导致滥用，例如，可能从自愿安乐死滑向非自愿安乐死。</li>
+                            <li><b>是否文明之争：</b>涉及对医生“救死扶伤”天职的挑战，以及一旦合法化，可能对社会价值观产生负面影响，导致“滑坡效应”（Slippery Slope），即对生命的敬畏感减弱。</li>
+                        </ol>
+                         <div class="image-container"><img src="images/image074.png" alt="真题复现"></div>
+                    </div>
+                </div>
+
+                <h3><a name="_Toc200755730"></a>第三节 安宁疗护伦理</h3>
+                 <div class="concept-block">
+                     <h4>安宁疗护概述</h4>
+                    <p><b>安宁疗护(Hospice/Palliative Care)：</b>是由多学科团队为疾病终末期或老年患者在临终前提供身体、心理、精神等方面的照料和人文关怀等服务，控制痛苦和不适症状，提高生命质量，帮助患者舒适、安详、有尊严地离世。</p>
+                    <p>【填空】现代意义的安宁疗护由英国的<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">西赛利·桑德斯</span></span>博士倡导并建立。1967年，她在英国创立了当代世界第一个安宁疗护机构——<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">圣克里斯多弗安宁疗护医院</span></span>。</p>
+                </div>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】安宁疗护的伦理要求</div>
+                    <div class="card-body">
+                        <ol>
+                           <li><b>理解临终患者的心理：</b>理解和应对患者的否认、愤怒、抑郁、接受等不同心理阶段。</li>
+                           <li><b>保护临终患者的权益：</b>确保其基本权利不受侵犯，包括知情同意权、隐私权和获得基本照护的权利。</li>
+                           <li><b>尊重临终患者的选择：</b>尊重其关于治疗、生活地点、身后事安排等方面的自主意愿。</li>
+                           <li><b>控制临终患者的症状：</b>将疼痛及其他不适症状的控制作为首要任务，维护患者的舒适与尊严。</li>
+                           <li><b>关怀临终患者的亲属：</b>为家属提供哀伤辅导和支持，帮助他们度过困难时期。</li>
+                           <li><b>关注临终患者的教育：</b>进行死亡教育，帮助患者和家属正确认识死亡，减少恐惧。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h2><a name="_Toc200755699"></a>第十二章 前沿医学技术伦理</h2>
+                <h3><a name="_Toc200755701"></a>第一节 基因伦理</h3>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】基因诊断和治疗中的伦理问题</div>
+                    <div class="card-body">
+                        <ul class="custom-list">
+                            <li><b>基因隐私与歧视：</b>基因信息是个人最核心的隐私。一旦泄露，可能导致个人在就业、保险等方面受到不公平待遇（基因歧视）。</li>
+                            <li><b>知情同意的复杂性：</b>基因信息不仅涉及个人，还涉及其整个家族。一个人的检测结果可能会暴露其亲属的遗传风险，这使得知情同意变得非常复杂。</li>
+                            <li><b>心理与社会影响：</b>对某些遗传病（如亨廷顿舞蹈症）的预测性诊断，可能给尚无症状的个体带来巨大的心理负担。</li>
+                            <li><b>生殖系基因治疗的风险：</b>对生殖细胞（精子、卵子）进行基因改造，其影响会遗传给后代，可能永久性地改变人类基因库，其长远后果未知且巨大，目前被普遍禁止。</li>
+                            <li><b>基因增强与公平性：</b>利用基因技术来“增强”人的某些非疾病相关特性（如智力、外貌），可能加剧社会不平等，制造出“基因富人”和“基因穷人”。</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3><a name="_Toc200755703"></a>第二节 克隆技术伦理</h3>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【重点·简答】如何看待克隆技术与克隆人？</div>
+                    <div class="card-body">
+                         <p><b>首先，必须严格区分两种克隆：</b></p>
+                         <ul class="custom-list">
+                             <li><b>治疗性克隆：</b>目的是获取胚胎干细胞，用于组织和器官的修复与再生，以治疗疾病。它不以制造一个完整的个体为目的。伦理上，其争议主要围绕胚胎的道德地位，但因其巨大的治疗潜力而被许多国家允许在严格监管下进行研究。</li>
+                             <li><b>生殖性克隆（克隆人）：</b>目的是复制一个完整的人类个体。这在伦理上是完全不同的，它面临着严重的技术安全风险、对人的尊严的挑战、对家庭社会关系的冲击等一系列无法克服的伦理障碍，因此被全球绝大多数国家明令禁止。</li>
+                         </ul>
+                         <p><b>反对克隆人的主要伦理理由：</b></p>
+                        <ol>
+                            <li><b>技术风险：</b>成功率极低，夭折和畸形风险高，对克隆人和代孕母体均构成严重伤害。</li>
+                            <li><b>身份与尊严：</b>克隆人可能被视为“复制品”，其独特性和个体尊严受到挑战。</li>
+                            <li><b>社会关系混乱：</b>颠覆了传统的家庭结构和亲缘关系，造成伦理混乱。</li>
+                            <li><b>“滑坡效应”：</b>可能导致基因歧视、将人工具化等严重后果。</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+			<section id="part5">
+                <h2><a name="_Toc200755708"></a>第十三章 医学科研伦理</h2>
+
+                <h3><a name="_Toc200755709"></a>第一节 科研诚信与医学科研道德规范</h3>
+                <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【重点·简答】什么是学术不端行为（FFP）？</div>
+                    <div class="card-body">
+                         <p>学术不端行为中简称“FFP”的三项主罪是：在计划、完成或评审科研项目或者在报告科研成果时<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">伪造(Fabrication)</span></span>、<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">篡改(Falsification)</span></span>或<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">剽窃(Plagiarism)</span></span>。</p>
+                         <p>其他不端行为还包括：不当署名、一稿多投、利益冲突未申明、数据管理不当等。</p>
+                    </div>
+                </div>
+
+                <h3><a name="_Toc200755713"></a>第二节 动物实验伦理</h3>
+                <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】动物实验的伦理原则（4R原则）</div>
+                    <div class="card-body">
+                         <ol>
+                            <li><b>替代 (Replacement):</b> 优先使用非动物实验方法（如计算机模拟、细胞培养）替代活体动物实验。</li>
+                            <li><b>减少 (Reduction):</b> 在保证获取有效数据的前提下，尽量减少实验所用动物的数量。</li>
+                            <li><b>优化 (Refinement):</b> 改进实验程序，减轻或消除动物的痛苦和不安，提高动物福利。</li>
+                            <li><b>责任 (Responsibility):</b> 科研人员应对实验动物怀有责任心，明确自身在善待动物、规范操作、遵守法规等方面的责任。</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <h3><a name="_Toc200755718"></a>第三节 人体实验伦理</h3>
+                <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【重点·简答】人体实验必须遵循的核心伦理原则</div>
+                    <div class="card-body">
+                        <p>主要源于《纽伦堡法典》和《赫尔辛基宣言》等国际准则，核心是：</p>
+                        <ol>
+                           <li><b>受试者利益高于一切：</b>研究的科学和社会价值不能凌驾于受试者的健康、安全和权利之上。</li>
+                           <li><b>知情同意：</b>这是人体实验伦理的基石。必须向受试者充分、真实地告知研究的目的、方法、风险和受益，并确保其在无胁迫的情况下自愿做出决定。受试者有权随时无理由退出。</li>
+                           <li><b>有利无伤：</b>研究设计应科学合理，使受试者的受益最大化，风险最小化。</li>
+                           <li><b>公正：</b>应公平地选择受试者，避免只利用弱势群体承担风险；同时，研究成果也应公平地惠及社会。</li>
+                           <li><b>伦理审查：</b>所有涉及人的生物医学研究，都必须提交给独立的伦理审查委员会（IRB/REC）进行审查和批准后方可实施。</li>
+                        </ol>
+                    </div>
+                </div>
+                 <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【真题复现】</div>
+                    <div class="card-body">
+                        <div class="image-container"><img src="images/image067.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image068.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image069.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image070.png" alt="真题复现"></div>
+                        <div class="image-container"><img src="images/image071.png" alt="真题复现"></div>
+                    </div>
+                </div>
+
+                <h2><a name="_Toc200755734"></a>第十五章 卫生保健制度及体制改革伦理</h2>
+                 <div class="concept-block">
+                    <p>完整的社会卫生保健制度，至少包括四个主要构成部分，即<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">医疗财政制度</span></span>、<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">医疗提供制度</span></span>、<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">医疗产业制度</span></span>和<span class="blank" onclick="toggleAnswer(this)" tabindex="0"><span class="placeholder">[...]</span><span class="answer-text" style="display:none">公共健康制度</span></span>。</p>
+                </div>
+                <div class="short-answer-card">
+                    <div class="card-header exam-question" onclick="toggleCard(this)">【重点·简答】如何理解卫生保健制度中的公平与效率？</div>
+                    <div class="card-body">
+                        <ol>
+                            <li><b>关系：</b>公平与效率是对立统一的辩证关系。效率是公平的物质基础；公平是效率的保障。</li>
+                            <li><b>优先次序：</b>在卫生保健领域，特别是基本医疗服务，<b>公平应优先于效率</b>。因为健康是基本人权，不能完全市场化。</li>
+                            <li><b>实现统一：</b>政府主导保基本、保公平；市场机制补充满足多层次、多样化的需求，最终实现“公平优先，兼顾效率”的目标。</li>
+                        </ol>
+                    </div>
+                </div>
+                 <div class="short-answer-card">
+                    <div class="card-header" onclick="toggleCard(this)">【简答】卫生保健制度中市场机制与政府责任</div>
+                    <div class="card-body">
+                         <ul class="custom-list">
+                            <li><b>市场机制的作用：</b>提高资源配置效率，通过竞争提升服务质量。</li>
+                            <li><b>市场失灵：</b>在医疗领域，市场会因信息不对称、公共产品供给不足、外部性等问题而“失灵”，导致费用高昂、服务不公等问题。</li>
+                            <li><b>政府的责任：</b>
+                                <ul class="custom-list">
+                                    <li><b>兜底线：</b>保障基本医疗服务的公平可及，为全民提供社会保障。</li>
+                                    <li><b>建机制：</b>制定规则，严格监管，维护市场秩序。</li>
+                                    <li><b>促发展：</b>提供公共产品（如公共卫生服务），支持医学科研和人才培养。</li>
+                                </ul>
+                            </li>
+                             <li><b>互补关系：</b>二者应协同作用。政府应主导基本医疗卫生服务的公益性，同时发挥市场机制在满足非基本、多样化医疗需求方面的作用。即“有为的政府”和“有效的市场”相结合。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2><a name="_Toc200755750"></a>案例分析汇总</h2>
+                <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 1</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image094.png" alt="案例分析1"><img src="images/image095.png" alt="案例分析1续"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>生命观、后果论与道义论对比、患者代理、医学四大原则。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 2</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image096.png" alt="案例分析2"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>见第四章“医学伦理学基本原则”，还可以多写生命观、美德论、后果论等内容。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-block">
+                     <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 3</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image097.png" alt="案例分析3"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>还是医学伦理的基本原则，适合的可以搭配上健康伦理，对于女子而言，健康是种权利。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 4</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image098.png" alt="案例分析4"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>优生伦理，胎儿的生命权，胎儿到底算不算生命。</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 5</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image099.png" alt="案例分析5"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>医患关系的构建，四大原则，代理权的特殊情况，美德论。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 6</div>
+                        <div class="card-body">
+                             <div class="image-container"><img src="images/image100.png" alt="案例分析6"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>生命观与优生优育。</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 7</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image101.png" alt="案例分析7"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>安乐死与安宁疗护（一定要分清楚二者的概念），医患沟通和家属如何交代清楚。</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 8</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image102.png" alt="案例分析8"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>医患关系原则，保密权，器官移植伦理—器官的来源。</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 9</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image103.png" alt="案例分析9"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>医患关系：医生某些情况下可以进行特殊干预，美德论、后果论、道义论，四大基本原则。</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="case-study-block">
+                    <div class="short-answer-card">
+                        <div class="card-header" onclick="toggleCard(this)">案例 10</div>
+                        <div class="card-body">
+                            <div class="image-container"><img src="images/image104.png" alt="案例分析10"></div>
+                            <div class="case-analysis-points"><b>【要点】</b>生命观、美德论、功利论、四大原则（特别是公正原则）、健康伦理等。</div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            </main>
+        
+        <div class="global-controls">
+            <button class="btn" onclick="resetAll()">全部重置</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(element) {
+            const placeholder = element.querySelector('.placeholder');
+            const answer = element.querySelector('.answer-text');
+            if (placeholder && answer) {
+                if (placeholder.style.display !== 'none') {
+                    placeholder.style.display = 'none';
+                    answer.style.display = 'inline';
+                } else {
+                    placeholder.style.display = 'inline';
+                    answer.style.display = 'none';
+                }
+            }
+        }
+        
+        function toggleCard(headerElement) {
+            headerElement.classList.toggle('active');
+            const body = headerElement.nextElementSibling;
+            if (body.style.display === "block") {
+                body.style.display = "none";
+            } else {
+                body.style.display = "block";
+            }
+        }
+
+        function resetAll() {
+            const allBlanks = document.querySelectorAll('.blank');
+            allBlanks.forEach(blank => {
+                const placeholder = blank.querySelector('.placeholder');
+                const answer = blank.querySelector('.answer-text');
+                
+                if(placeholder) placeholder.style.display = 'inline';
+                if(answer) answer.style.display = 'none';
+            });
+
+            const allCardHeaders = document.querySelectorAll('.card-header.active');
+            allCardHeaders.forEach(header => {
+                 header.classList.remove('active');
+                 header.nextElementSibling.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
